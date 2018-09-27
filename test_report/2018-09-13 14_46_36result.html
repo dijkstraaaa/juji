@@ -1,0 +1,961 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Uney接口测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>Uney接口测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2018-09-13 14:46:36</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:30.318586</p>
+<p class='attribute'><strong>Status:</strong> Error 9</p>
+
+<p class='description'>测试用例执行情况</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test.Login</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='ft1.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        error</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\testcase\test.py", line 29, in test_login
+    driver.get(site)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 332, in get
+    self.execute(Command.GET, {'url': url})
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 320, in execute
+    self.error_handler.check_response(response)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: Reached error page: about:neterror?e=connectionFailure&amp;u=http%3A//123.56.1.184%3A40000/swagger-ui.html&amp;c=UTF-8&amp;f=regular&amp;d=Firefox%20%E6%97%A0%E6%B3%95%E5%BB%BA%E7%AB%8B%E5%88%B0%20123.56.1.184%3A40000%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E3%80%82
+
+b'Traceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\testcase\\test.py", line 29, in test_login\n    driver.get(site)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py", line 332, in get\n    self.execute(Command.GET, {\'url\': url})\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\selenium\\webdriver\\remote\\webdriver.py", line 320, in execute\n    self.error_handler.check_response(response)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\selenium\\webdriver\\remote\\errorhandler.py", line 242, in check_response\n    raise exception_class(message, screen, stacktrace)\nselenium.common.exceptions.WebDriverException: Message: Reached error page: about:neterror?e=connectionFailure&amp;u=http%3A//123.56.1.184%3A40000/swagger-ui.html&amp;c=UTF-8&amp;f=regular&amp;d=Firefox%20%E6%97%A0%E6%B3%95%E5%BB%BA%E7%AB%8B%E5%88%B0%20123.56.1.184%3A40000%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E3%80%82\n\n'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_00.Index</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c2',2)">Detail</a></td>
+</tr>
+
+<tr id='ft2.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_openhome</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.1')" >
+        error</a>
+
+    <div id='div_ft2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.1: Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5C0F0&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5C0F0&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\testcase\test_00.py", line 20, in test_openhome
+    r = requests.get("http://123.56.1.184:40000/swagger-ui.html")
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5C0F0&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+b'Traceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 171, in _new_conn\n    (self._dns_host, self.port), self.timeout, **extra_kw)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 79, in create_connection\n    raise err\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 69, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 600, in urlopen\n    chunked=chunked)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 354, in _make_request\n    conn.request(method, url, **httplib_request_kw)\n  File "C:\\Python37\\lib\\http\\client.py", line 1229, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1275, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1224, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1016, in _send_output\n    self.send(msg)\n  File "C:\\Python37\\lib\\http\\client.py", line 956, in send\n    self.connect()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 196, in connect\n    conn = self._new_conn()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 180, in _new_conn\n    self, "Failed to establish a new connection: %s" % e)\nurllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5C0F0&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 445, in send\n    timeout=timeout\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 638, in urlopen\n    _stacktrace=sys.exc_info()[2])\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\retry.py", line 398, in increment\n    raise MaxRetryError(_pool, url, error or ResponseError(cause))\nurllib3.exceptions.MaxRetryError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5C0F0&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\testcase\\test_00.py", line 20, in test_openhome\n    r = requests.get("http://123.56.1.184:40000/swagger-ui.html")\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 72, in get\n    return request(\'get\', url, params=params, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 58, in request\n    return session.request(method=method, url=url, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 512, in request\n    resp = self.send(prep, **send_kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 622, in send\n    r = adapter.send(request, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 513, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5C0F0&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft2.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_result</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft2.2')" >
+        error</a>
+
+    <div id='div_ft2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft2.2: Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1AC70B8&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1AC70B8&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\testcase\test_00.py", line 29, in test_result
+    r = requests.get("http://123.56.1.184:40000/swagger-ui.html")
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 72, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1AC70B8&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+b'Traceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 171, in _new_conn\n    (self._dns_host, self.port), self.timeout, **extra_kw)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 79, in create_connection\n    raise err\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 69, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 600, in urlopen\n    chunked=chunked)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 354, in _make_request\n    conn.request(method, url, **httplib_request_kw)\n  File "C:\\Python37\\lib\\http\\client.py", line 1229, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1275, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1224, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1016, in _send_output\n    self.send(msg)\n  File "C:\\Python37\\lib\\http\\client.py", line 956, in send\n    self.connect()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 196, in connect\n    conn = self._new_conn()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 180, in _new_conn\n    self, "Failed to establish a new connection: %s" % e)\nurllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1AC70B8&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 445, in send\n    timeout=timeout\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 638, in urlopen\n    _stacktrace=sys.exc_info()[2])\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\retry.py", line 398, in increment\n    raise MaxRetryError(_pool, url, error or ResponseError(cause))\nurllib3.exceptions.MaxRetryError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1AC70B8&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\testcase\\test_00.py", line 29, in test_result\n    r = requests.get("http://123.56.1.184:40000/swagger-ui.html")\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 72, in get\n    return request(\'get\', url, params=params, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 58, in request\n    return session.request(method=method, url=url, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 512, in request\n    resp = self.send(prep, **send_kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 622, in send\n    r = adapter.send(request, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 513, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1AC70B8&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_01.Login</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>2</td>
+    <td><a href="javascript:showClassDetail('c3',2)">Detail</a></td>
+</tr>
+
+<tr id='ft3.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_01</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        error</a>
+
+    <div id='div_ft3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.1: Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5CD30&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5CD30&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\testcase\test_01.py", line 32, in test_login_01
+    r = requests.post(url, data=json.dumps(data))
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 112, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5CD30&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+b'Traceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 171, in _new_conn\n    (self._dns_host, self.port), self.timeout, **extra_kw)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 79, in create_connection\n    raise err\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 69, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 600, in urlopen\n    chunked=chunked)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 354, in _make_request\n    conn.request(method, url, **httplib_request_kw)\n  File "C:\\Python37\\lib\\http\\client.py", line 1229, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1275, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1224, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1016, in _send_output\n    self.send(msg)\n  File "C:\\Python37\\lib\\http\\client.py", line 956, in send\n    self.connect()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 196, in connect\n    conn = self._new_conn()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 180, in _new_conn\n    self, "Failed to establish a new connection: %s" % e)\nurllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5CD30&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 445, in send\n    timeout=timeout\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 638, in urlopen\n    _stacktrace=sys.exc_info()[2])\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\retry.py", line 398, in increment\n    raise MaxRetryError(_pool, url, error or ResponseError(cause))\nurllib3.exceptions.MaxRetryError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5CD30&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\testcase\\test_01.py", line 32, in test_login_01\n    r = requests.post(url, data=json.dumps(data))\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 112, in post\n    return request(\'post\', url, data=data, json=json, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 58, in request\n    return session.request(method=method, url=url, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 512, in request\n    resp = self.send(prep, **send_kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 622, in send\n    r = adapter.send(request, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 513, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A5CD30&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_login_02</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.2')" >
+        error</a>
+
+    <div id='div_ft3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.2: Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A197B8&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A197B8&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\testcase\test_01.py", line 45, in test_login_02
+    r = requests.post(url, data=json.dumps(data))
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 112, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A197B8&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+b'Traceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 171, in _new_conn\n    (self._dns_host, self.port), self.timeout, **extra_kw)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 79, in create_connection\n    raise err\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 69, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 600, in urlopen\n    chunked=chunked)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 354, in _make_request\n    conn.request(method, url, **httplib_request_kw)\n  File "C:\\Python37\\lib\\http\\client.py", line 1229, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1275, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1224, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1016, in _send_output\n    self.send(msg)\n  File "C:\\Python37\\lib\\http\\client.py", line 956, in send\n    self.connect()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 196, in connect\n    conn = self._new_conn()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 180, in _new_conn\n    self, "Failed to establish a new connection: %s" % e)\nurllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A197B8&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 445, in send\n    timeout=timeout\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 638, in urlopen\n    _stacktrace=sys.exc_info()[2])\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\retry.py", line 398, in increment\n    raise MaxRetryError(_pool, url, error or ResponseError(cause))\nurllib3.exceptions.MaxRetryError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A197B8&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\testcase\\test_01.py", line 45, in test_login_02\n    r = requests.post(url, data=json.dumps(data))\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 112, in post\n    return request(\'post\', url, data=data, json=json, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 58, in request\n    return session.request(method=method, url=url, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 512, in request\n    resp = self.send(prep, **send_kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 622, in send\n    r = adapter.send(request, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 513, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1A197B8&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_02.Logout</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c4',1)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_logout</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        error</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: Traceback (most recent call last):
+  File "C:\Python37\lib\urllib\request.py", line 1317, in do_open
+    encode_chunked=req.has_header('Transfer-encoding'))
+  File "C:\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "C:\Python37\lib\http\client.py", line 928, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "C:\Python37\lib\socket.py", line 727, in create_connection
+    raise err
+  File "C:\Python37\lib\socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\testcase\test_02.py", line 38, in test_logout
+    response = urlopen(req)
+  File "C:\Python37\lib\urllib\request.py", line 222, in urlopen
+    return opener.open(url, data, timeout)
+  File "C:\Python37\lib\urllib\request.py", line 525, in open
+    response = self._open(req, data)
+  File "C:\Python37\lib\urllib\request.py", line 543, in _open
+    '_open', req)
+  File "C:\Python37\lib\urllib\request.py", line 503, in _call_chain
+    result = func(*args)
+  File "C:\Python37\lib\urllib\request.py", line 1345, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "C:\Python37\lib\urllib\request.py", line 1319, in do_open
+    raise URLError(err)
+urllib.error.URLError: &lt;urlopen error [WinError 10061] 由于目标计算机积极拒绝，无法连接。&gt;
+b'Traceback (most recent call last):\n  File "C:\\Python37\\lib\\urllib\\request.py", line 1317, in do_open\n    encode_chunked=req.has_header(\'Transfer-encoding\'))\n  File "C:\\Python37\\lib\\http\\client.py", line 1229, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1275, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1224, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1016, in _send_output\n    self.send(msg)\n  File "C:\\Python37\\lib\\http\\client.py", line 956, in send\n    self.connect()\n  File "C:\\Python37\\lib\\http\\client.py", line 928, in connect\n    (self.host,self.port), self.timeout, self.source_address)\n  File "C:\\Python37\\lib\\socket.py", line 727, in create_connection\n    raise err\n  File "C:\\Python37\\lib\\socket.py", line 716, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\testcase\\test_02.py", line 38, in test_logout\n    response = urlopen(req)\n  File "C:\\Python37\\lib\\urllib\\request.py", line 222, in urlopen\n    return opener.open(url, data, timeout)\n  File "C:\\Python37\\lib\\urllib\\request.py", line 525, in open\n    response = self._open(req, data)\n  File "C:\\Python37\\lib\\urllib\\request.py", line 543, in _open\n    \'_open\', req)\n  File "C:\\Python37\\lib\\urllib\\request.py", line 503, in _call_chain\n    result = func(*args)\n  File "C:\\Python37\\lib\\urllib\\request.py", line 1345, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n  File "C:\\Python37\\lib\\urllib\\request.py", line 1319, in do_open\n    raise URLError(err)\nurllib.error.URLError: &lt;urlopen error [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82&gt;\n'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='errorClass'>
+    <td>test_03.SignUp</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>3</td>
+    <td><a href="javascript:showClassDetail('c5',3)">Detail</a></td>
+</tr>
+
+<tr id='ft5.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_signup_01</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.1')" >
+        error</a>
+
+    <div id='div_ft5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.1: Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19128&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19128&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\testcase\test_03.py", line 34, in test_signup_01
+    r = requests.post(url, data=json.dumps(data))
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 112, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19128&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+b'Traceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 171, in _new_conn\n    (self._dns_host, self.port), self.timeout, **extra_kw)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 79, in create_connection\n    raise err\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 69, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 600, in urlopen\n    chunked=chunked)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 354, in _make_request\n    conn.request(method, url, **httplib_request_kw)\n  File "C:\\Python37\\lib\\http\\client.py", line 1229, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1275, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1224, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1016, in _send_output\n    self.send(msg)\n  File "C:\\Python37\\lib\\http\\client.py", line 956, in send\n    self.connect()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 196, in connect\n    conn = self._new_conn()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 180, in _new_conn\n    self, "Failed to establish a new connection: %s" % e)\nurllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19128&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 445, in send\n    timeout=timeout\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 638, in urlopen\n    _stacktrace=sys.exc_info()[2])\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\retry.py", line 398, in increment\n    raise MaxRetryError(_pool, url, error or ResponseError(cause))\nurllib3.exceptions.MaxRetryError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19128&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\testcase\\test_03.py", line 34, in test_signup_01\n    r = requests.post(url, data=json.dumps(data))\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 112, in post\n    return request(\'post\', url, data=data, json=json, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 58, in request\n    return session.request(method=method, url=url, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 512, in request\n    resp = self.send(prep, **send_kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 622, in send\n    r = adapter.send(request, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 513, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19128&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_signup_02</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.2')" >
+        error</a>
+
+    <div id='div_ft5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.2: Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19828&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19828&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\testcase\test_03.py", line 47, in test_signup_02
+    r = requests.post(url, data=json.dumps(data))
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 112, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19828&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+b'Traceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 171, in _new_conn\n    (self._dns_host, self.port), self.timeout, **extra_kw)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 79, in create_connection\n    raise err\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 69, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 600, in urlopen\n    chunked=chunked)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 354, in _make_request\n    conn.request(method, url, **httplib_request_kw)\n  File "C:\\Python37\\lib\\http\\client.py", line 1229, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1275, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1224, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1016, in _send_output\n    self.send(msg)\n  File "C:\\Python37\\lib\\http\\client.py", line 956, in send\n    self.connect()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 196, in connect\n    conn = self._new_conn()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 180, in _new_conn\n    self, "Failed to establish a new connection: %s" % e)\nurllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19828&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 445, in send\n    timeout=timeout\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 638, in urlopen\n    _stacktrace=sys.exc_info()[2])\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\retry.py", line 398, in increment\n    raise MaxRetryError(_pool, url, error or ResponseError(cause))\nurllib3.exceptions.MaxRetryError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19828&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\testcase\\test_03.py", line 47, in test_signup_02\n    r = requests.post(url, data=json.dumps(data))\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 112, in post\n    return request(\'post\', url, data=data, json=json, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 58, in request\n    return session.request(method=method, url=url, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 512, in request\n    resp = self.send(prep, **send_kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 622, in send\n    r = adapter.send(request, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 513, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19828&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.3' class='none'>
+    <td class='errorCase'><div class='testcase'>test_signup_03</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.3')" >
+        error</a>
+
+    <div id='div_ft5.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.3: Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 79, in create_connection
+    raise err
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\connection.py", line 69, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Python37\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Python37\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Python37\lib\http\client.py", line 956, in send
+    self.connect()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 196, in connect
+    conn = self._new_conn()
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connection.py", line 180, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19F28&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 445, in send
+    timeout=timeout
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19F28&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Auto-testing\InterFace-testing\testcase\test_03.py", line 60, in test_signup_03
+    r = requests.post(url, data=json.dumps(data))
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 112, in post
+    return request('post', url, data=data, json=json, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\api.py", line 58, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 512, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\sessions.py", line 622, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Auto-testing\InterFace-testing\venv\lib\site-packages\requests\adapters.py", line 513, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='123.56.1.184', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19F28&gt;: Failed to establish a new connection: [WinError 10061] 由于目标计算机积极拒绝，无法连接。'))
+b'Traceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 171, in _new_conn\n    (self._dns_host, self.port), self.timeout, **extra_kw)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 79, in create_connection\n    raise err\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\connection.py", line 69, in create_connection\n    sock.connect(sa)\nConnectionRefusedError: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 600, in urlopen\n    chunked=chunked)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 354, in _make_request\n    conn.request(method, url, **httplib_request_kw)\n  File "C:\\Python37\\lib\\http\\client.py", line 1229, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1275, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1224, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n  File "C:\\Python37\\lib\\http\\client.py", line 1016, in _send_output\n    self.send(msg)\n  File "C:\\Python37\\lib\\http\\client.py", line 956, in send\n    self.connect()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 196, in connect\n    conn = self._new_conn()\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connection.py", line 180, in _new_conn\n    self, "Failed to establish a new connection: %s" % e)\nurllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19F28&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 445, in send\n    timeout=timeout\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\connectionpool.py", line 638, in urlopen\n    _stacktrace=sys.exc_info()[2])\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\urllib3\\util\\retry.py", line 398, in increment\n    raise MaxRetryError(_pool, url, error or ResponseError(cause))\nurllib3.exceptions.MaxRetryError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19F28&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File "D:\\Auto-testing\\InterFace-testing\\testcase\\test_03.py", line 60, in test_signup_03\n    r = requests.post(url, data=json.dumps(data))\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 112, in post\n    return request(\'post\', url, data=data, json=json, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\api.py", line 58, in request\n    return session.request(method=method, url=url, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 512, in request\n    resp = self.send(prep, **send_kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\sessions.py", line 622, in send\n    r = adapter.send(request, **kwargs)\n  File "D:\\Auto-testing\\InterFace-testing\\venv\\lib\\site-packages\\requests\\adapters.py", line 513, in send\n    raise ConnectionError(e, request=request)\nrequests.exceptions.ConnectionError: HTTPConnectionPool(host=\'123.56.1.184\', port=40000): Max retries exceeded with url: /swagger-ui.html (Caused by NewConnectionError(\'&lt;urllib3.connection.HTTPConnection object at 0x000001F3C1B19F28&gt;: Failed to establish a new connection: [WinError 10061] \xe7\x94\xb1\xe4\xba\x8e\xe7\x9b\xae\xe6\xa0\x87\xe8\xae\xa1\xe7\xae\x97\xe6\x9c\xba\xe7\xa7\xaf\xe6\x9e\x81\xe6\x8b\x92\xe7\xbb\x9d\xef\xbc\x8c\xe6\x97\xa0\xe6\xb3\x95\xe8\xbf\x9e\xe6\x8e\xa5\xe3\x80\x82\'))\n'
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>9</td>
+    <td>0</td>
+    <td>0</td>
+    <td>9</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+1536821202397	geckodriver	INFO	geckodriver 0.21.0
+1536821202426	geckodriver	INFO	Listening on 127.0.0.1:57460
+1536821205509	mozrunner::runner	INFO	Running command: "D:\\FireFox\\firefox.exe" "-marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\admin\\AppData\\Local\\Temp\\rust_mozprofile.o0KdxgqRUanN"
+1536821215649	Marionette	INFO	Listening on port 57475
+1536821215764	Marionette	WARN	TLS certificate errors will be ignored for this session
+1536821215970	Marionette	DEBUG	[6442450945] Frame script loaded
+1536821215985	Marionette	DEBUG	[6442450945] Frame script registered
+1536821216027	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for about:blank
+1536821217346	Marionette	DEBUG	[6442450945] Received DOM event beforeunload for about:blank
+1536821217351	Marionette	DEBUG	[6442450945] Received DOM event pagehide for about:blank
+1536821217460	Marionette	DEBUG	[6442450945] Received DOM event DOMContentLoaded for about:neterror?e=connectionFailure&u=http%3A//123.56.1.184%3A40000/swagger-ui.html&c=UTF-8&f=regular&d=Firefox%20%E6%97%A0%E6%B3%95%E5%BB%BA%E7%AB%8B%E5%88%B0%20123.56.1.184%3A40000%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E8%BF%9E%E6%8E%A5%E3%80%82
+[Child 3396, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 11720, Chrome_ChildThread] WARNING: [Child 3396, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/commopipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 11720, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build[Parent 8768, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 13008, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child1536821417320	Marionette	INFO	Stopped listening on port 57475
+[GPU 10012, C
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
