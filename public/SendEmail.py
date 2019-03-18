@@ -22,10 +22,10 @@ def _format_addr(s):
 
 def send_file(file_new):
     smtpserver = 'smtp.exmail.qq.com'
-    user = 'xuesong.zhao@juniuo.com'
-    password = 'HKzxs8494'
-    sender = 'xuesong.zhao@juniuo.com'
-    receiver = ['xuesong.zhao@juniuo.com']
+    user = 'XXX@XX.com'
+    password = 'XXX'
+    sender = 'XXX@XX.com'
+    receiver = ['XXX@XX.com']
     file = open(file_new, 'rb').read()
 
     now = time.strftime("%Y-%m-%d %H_%M_%S")
@@ -37,8 +37,8 @@ def send_file(file_new):
 
     msgRoot = MIMEMultipart('mixed')
     msgRoot['Subject'] = Header(subject, 'utf-8').encode()
-    msgRoot['From'] = 'xuesong.zhao@juniuo.com'
-    msgRoot['To'] = 'xuesong.zhao@juniuo.com'
+    msgRoot['From'] = 'XXX@XX.com'
+    msgRoot['To'] = 'XXX@XX.com'
     msgRoot.attach(att)
 
     smtp = smtplib.SMTP()
